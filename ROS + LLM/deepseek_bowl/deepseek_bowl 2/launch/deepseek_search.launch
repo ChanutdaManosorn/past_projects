@@ -1,0 +1,22 @@
+<launch>
+  <arg name="model" default="burger"/>
+  <param name="robot_description" command="$(find xacro)/xacro '$(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro'" />
+
+  <!-- Start Gazebo house world -->
+  <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_house.launch" />
+
+  <!-- Start Navigation -->
+  <include file="$(find turtlebot3_navigation)/launch/turtlebot3_navigation.launch" />
+
+  <!-- Spawn bowls -->
+  <node name="spawn_bowls" pkg="deepseek_bowl_search" type="spawn_bowls.py" output="screen" />
+
+  <!-- Run listener -->
+  <node name="llm_listener" pkg="deepseek_bowl_search" type="ros_command_listener.py" output="screen"/>
+
+  <node pkg="turtlebot3_navigation" type="set_pose.py" name="set_initial_pose" output="screen">
+  <param name="initial_pose_x" value="1.5" />
+  <param name="initial_pose_y" value="0.5" />
+  <param name="initial_pose_yaw" value="0.0" />
+</node>
+</launch>
