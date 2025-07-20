@@ -1,0 +1,18 @@
+<launch>
+  <!-- Set robot model -->
+  <arg name="model" default="waffle_pi" />
+  <env name="TURTLEBOT3_MODEL" value="$(arg model)" />
+
+  <!-- Load custom DWA planner parameters -->
+  <rosparam file="$(find deepseek_world_search)/config/custom_dwa.yaml" command="load" />
+  <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+
+  <!-- Launch TurtleBot3 Navigation with custom map -->
+  <include file="$(find turtlebot3_navigation)/launch/turtlebot3_navigation.launch">
+    <arg name="map_file" value="$(env HOME)/house_map3.yaml" />
+  </include>
+
+  <!-- RViz for visualization -->
+  <!-- node name="rviz" pkg="rviz" type="rviz" output="screen"
+        args="-d $(find turtlebot3_navigation)/rviz/turtlebot3_nav.rviz" / -->
+</launch>

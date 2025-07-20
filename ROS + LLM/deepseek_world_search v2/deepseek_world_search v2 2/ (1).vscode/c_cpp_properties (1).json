@@ -1,0 +1,24 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/ros/catkin_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/ros/catkin_ws/src/explore_lite/explore/include/**",
+        "/home/ros/catkin_ws/src/explore_lite/map_merge/include/**",
+        "/home/ros/catkin_ws/src/turtlebot3_auto_mapping/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
